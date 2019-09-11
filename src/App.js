@@ -97,7 +97,7 @@ render() {
         <button style={display1} className="btn btn-danger" onClick = {this.handleClicktj.bind(this,{index}) }>添加</button>
         <button style={display2} className="btn btn-danger" onClick = {this.handleClicksc.bind(this,{index})}>删除</button>
         </div>
-        )
+        ) 
         })}
     </div>
     )
