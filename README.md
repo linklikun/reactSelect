@@ -27,42 +27,16 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+# 需求：
+1 级联菜单   
+2 点击添加按钮，增加一个同样的菜单（数据不同），增加的菜单位置是点击菜单的下面  
+3 实现数据的暂存和不同步，三个级联菜单可以选择不同的值且不同步
+## 思考：
+### 第一次
+1 级联菜单实现需要将第一个菜单数据遍历，然后在此基础上将数据（第一次选择的数据）传递到state（思考暂存数据结构。。。）  
+2 第二个选择器的数据要根据第一个选择器的数据进行判断，也就是说要将第一个选择器传回的数据在获取到render中，在render中使用判断state中的数据是否改变，然后在选择渲染对应数据。（思考数据源。。。）  
+3 同时第二个选择器需要将获取的数据暂存，同样上传到state（数据结构）  
+4 第一次数据源：如果需要将第一次获取的数据再次对比则需要和数据源中的数据对比，那么需要将state的数据与数据源作对比（遍历数据源第一选择器数据与state的数据对比），所以数据源做成[{}]数组对象。对象包含的属性再做成数组。这样可以将  
+    str(item)=>item.option===state.firstDate  
+5 然后再将子数组遍历输出  
+6 数据结构：如果是一个下拉列表，那么数据可以定义为单个对象，但是后面要增加多个列表，那么需要将对象变为数组对象，并且可以将数据暂存，然后在通过添加按钮时在push新的对象，然后在render是靠state的value来控制数据下标不被污染

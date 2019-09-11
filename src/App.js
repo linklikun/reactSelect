@@ -7,10 +7,12 @@ const data = [
     children: ['太原市','临汾市']
   },
   {
-    name: '山东省', children: ['济南市','青岛市']
+    name: '山东省', 
+    children: ['济南市','青岛市']
   },
   {
-    name: '河南省', children: ['郑州市','洛阳市']
+    name: '河南省', 
+    children: ['郑州市','洛阳市']
   },
 ]
 
@@ -94,7 +96,12 @@ render() {
             <option></option>
           {data.map((item,indexright) => {
         if( this.state.str1[{index}.index].left !== '' ){
+            console.log('====================================');
+            console.log(item.name);
+            console.log('====================================');
           if( this.state.str1[{index}.index].left === item.name ){
+            console.log(item.name);
+            
             return item.children.map((item, indexrightone) =>
                 <option key={indexrightone}>{item}</option>)
           }
